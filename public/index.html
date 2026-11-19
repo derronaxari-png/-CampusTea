@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0c0f">
+    <meta name="description" content="The anonymous campus tea is always brewing at Knutsford University.">
+    <title>Knutsford Tea — The campus is talking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Knutsford Tea home">
+          <span class="brand-mark">k<span>.</span></span>
+          <span class="brand-name">knutsford<span>tea</span></span>
+        </a>
+        <div class="campus-label"><span class="campus-dot"></span> KNUTSFORD UNIVERSITY</div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a class="nav-link active" href="#feed"><span class="nav-icon">◉</span> The tea <span class="nav-count" id="nav-count">LIVE</span></a>
+          <a class="nav-link" href="#composer"><span class="nav-icon">✳</span> Spill something</a>
+        </nav>
+
+        <div class="sidebar-divider"></div>
+        <p class="side-heading">YOUR CAMPUS, YOUR CALL</p>
+        <div class="side-note"><span class="note-icon">✦</span><p>Keep it juicy.<br><strong>Keep it kind.</strong></p></div>
+        <p class="side-caption">No names. No screenshots.<br>Just the stories we all hear.</p>
+
+        <div class="sidebar-bottom">
+          <div class="anonymous-card"><span class="anon-avatar">?</span><div><strong>Campus insider</strong><small>Posting anonymously</small></div><span class="privacy-lock">⌑</span></div>
+          <span class="version-label">A LITTLE BIRDIE TOLD US</span>
+        </div>
+      </aside>
+
+      <main class="main-content" id="feed">
+        <header class="topbar">
+          <div class="mobile-brand"><span class="brand-mark">k<span>.</span></span> knutsford<span>tea</span></div>
+          <div class="breadcrumb">KNUTSFORD UNIVERSITY <span>/</span> <strong>THE TEA</strong></div>
+          <div class="live-status"><span class="pulse-dot"></span> CAMPUS IS TALKING</div>
+        </header>
+
+        <section class="feed-column">
+          <div class="welcome-row">
+            <div>
+              <p class="eyebrow"><span class="spark">✳</span> THE WORD ON CAMPUS</p>
+              <h1>The tea <span>is hot.</span></h1>
+              <p class="welcome-subtitle">What’s happening at Knutsford? You heard it here (anonymously).</p>
+            </div>
+            <div class="cup-art" aria-hidden="true"><div class="cup-steam">〰</div><div class="cup">☕</div><span>100%<br>UNFILTERED</span></div>
+          </div>
+
+          <section class="composer-card" id="composer" aria-label="Share campus tea">
+            <div class="composer-top">
+              <span class="anon-avatar">?</span>
+              <div class="composer-input-wrap">
+                <label for="post-body" class="visually-hidden">What’s the tea?</label>
+                <textarea id="post-body" maxlength="500" rows="2" placeholder="What’s the tea? Spill it (but keep it kind)..."></textarea>
+              </div>
+            </div>
+            <div class="composer-bottom">
+              <div class="composer-tools">
+                <label class="category-select-label" for="post-category">✳</label>
+                <select id="post-category" aria-label="Choose a category">
+                  <option>Hot take</option>
+                  <option>Campus</option>
+                  <option>Dating</option>
+                  <option>Confessions</option>
+                </select>
+                <span class="char-count" id="char-count">0 / 500</span>
+              </div>
+              <button class="spill-button" id="spill-button" type="button">Spill the tea <span>↗</span></button>
+            </div>
+            <p class="form-message" id="form-message" role="status"></p>
+          </section>
+
+          <div class="feed-toolbar">
+            <div><h2>Freshly spilled</h2><span class="feed-subtitle">The latest from around campus</span></div>
+            <div class="sort-label"><span class="pulse-dot"></span> LIVE FEED</div>
+          </div>
+
+          <div class="post-list" id="post-list" aria-live="polite">
+            <div class="loading-card"><span class="loading-spinner"></span> Warming up the kettle...</div>
+          </div>
+          <div class="end-note"><span>✳</span> You’re all caught up. Go make some tea.</div>
+        </section>
+      </main>
+
+      <aside class="right-rail">
+        <section class="rail-card hot-card">
+          <div class="rail-title-row"><h2><span>↗</span> Campus pulse</h2><span class="live-pill">LIVE</span></div>
+          <p class="rail-subtitle">The conversation is brewing</p>
+          <div class="pulse-stat"><div class="stat-icon">☕</div><div><strong id="pulse-count">0</strong><span>fresh spills today</span></div><span class="stat-trend">✳</span></div>
+          <div class="pulse-stat"><div class="stat-icon purple">◉</div><div><strong>Knutsford</strong><span>your campus, your tea</span></div><span class="stat-trend purple-text">✦</span></div>
+          <div class="rail-footer"><span class="pulse-dot"></span> JUST BETWEEN US (AND CAMPUS)</div>
+        </section>
+
+        <section class="rail-card rules-card">
+          <div class="rail-title-row"><h2><span class="rules-icon">✳</span> The ground rules</h2></div>
+          <ul>
+            <li><span>01</span> Spill tea, not personal info.</li>
+            <li><span>02</span> No names. No doxxing. No bullying.</li>
+            <li><span>03</span> Keep it fun, keep it respectful.</li>
+          </ul>
+          <p>Good gossip brings us together. Be the reason it stays that way.</p>
+        </section>
+
+        <section class="rail-quote">
+          <span>“</span>
+          <p>There’s no such thing<br>as a little birdie at<br><strong>Knutsford.</strong></p>
+          <div class="quote-line"></div>
+        </section>
+        <div class="rail-bottom">MADE FOR THE CAMPUS, BY THE CAMPUS <span>✳</span></div>
+      </aside>
+    </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="#feed" class="mobile-nav-link"><span>◉</span><strong>The tea</strong></a>
+      <a href="#composer" class="mobile-nav-link compose-link"><span>✳</span><strong>Spill</strong></a>
+    </nav>
+    <div id="toast" class="toast" role="status"></div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
