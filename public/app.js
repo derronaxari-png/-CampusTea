@@ -54,6 +54,7 @@ function renderPost(post) {
       <div class="post-actions">
         <button class="action-button reaction-button ${reacted ? "reacted" : ""}" type="button" aria-label="React with tea"><span>♨</span><b>${Number(post.reactions) || 0}</b> sips</button>
         <button class="action-button comment-toggle" type="button"><span>↳</span>${Number(post.comment_count) || comments.length} whispers</button>
+        <button class="action-button report-button" type="button" aria-label="Report post" title="Report this post"><span>⚑</span></button>
       </div>
       <div class="comments">${comments.map(renderComment).join("")}</div>
       <form class="comment-form">
@@ -138,7 +139,7 @@ spillButton.addEventListener("click", async () => {
   try {
     await request("/api/posts", {
       method: "POST",
-      body: JSON.stringify({ body: composer.value, category: categorySelect.value }),
+      body: JSON.stringify({ body: composer.value, category: categorySelect.value, visitorId }),
     });
     composer.value = "";
     charCount.textContent = "0 / 500";
@@ -156,8 +157,28 @@ postList.addEventListener("click", async (event) => {
   const card = event.target.closest(".post-card");
   if (!card) return;
   const postId = card.dataset.postId;
-  if (event.target.closest(".comment-toggle")) {
-    card.querySelector(".comment-form input").focus();
+    if (event.target.closest(".report-button")) {
+    const reason = prompt(
+      "Why are you reporting this?\nType: bullying, doxxing, spam, or other",
+      "bullying",
+    );
+    if (!reason) return;
+    
+    const normalized = reason.trim().toLowerCase();
+    if (!["bullying", "doxxing", "spam", "other"].includes(normalized)) {
+      showToast("Pick one of: bullying, doxxing, spam, other");
+      return;
+    }
+    
+    try {
+      await request(`/api/posts/${encodeURIComponent(postId)}/report`, {
+        method: "POST",
+        body: JSON.stringify({ reason: normalized, visitorId }),
+      });
+      showToast("Reported. The campus thanks you. ⚑");
+    } catch (err) {
+      showToast(err.message);
+    }
     return;
   }
   if (event.target.closest(".reaction-button")) {
@@ -186,7 +207,7 @@ postList.addEventListener("submit", async (event) => {
   try {
     await request(`/api/posts/${encodeURIComponent(card.dataset.postId)}/comments`, {
       method: "POST",
-      body: JSON.stringify({ body: input.value }),
+      body: JSON.stringify({ body: input.value, visitorId }),
     });
     input.value = "";
     await loadPosts();
